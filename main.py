@@ -1,16 +1,15 @@
 from typing import Optional
-from fastapi import FastAPI
-from fastapi.responses 
-import HTMLResponse #インポート
 
-import random  # randomライブラリを追加
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+
+import random
 
 app = FastAPI()
 
-
 @app.get("/")
 async def root():
-    return {"message": "takoyaki"}
+    return {"message": "takoyak🐙ika"}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
@@ -30,10 +29,9 @@ def omikuji():
         "小凶",
         "大凶"
     ]
-
     return omikuji_list[random.randrange(10)]
 
-    @app.get("/index")
+@app.get("/index")
 def index():
     html_content = """
     <html>
@@ -46,3 +44,7 @@ def index():
     </html>
     """
     return HTMLResponse(content=html_content, status_code=200)
+
+@app.post("/present")
+async def new_naming(present: str):
+    return {"response": f"サーバです。メリークリスマス！ {present}ありがとう。お返しはキャンディーです。"}
