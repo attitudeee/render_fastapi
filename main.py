@@ -39,7 +39,7 @@ def index():
             <title>Some HTML in here</title>
         </head>
         <body>
-            <h1>Look ma! HTML!</h1>
+            <h1>Connection succeeded! Look ma! HTML!</h1>
         </body>
     </html>
     """
